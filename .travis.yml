@@ -1,6 +1,6 @@
 sudo: true
 language: c
-compiler: clang
+compiler: gcc
 before_install:
   - mkdir ndk
   - cd ndk
