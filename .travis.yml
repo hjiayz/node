@@ -4,6 +4,7 @@ before_install:
   - ./android-configure ./android-ndk-r10e
 script:
   - make
+  - rm node
   - cp -a out/Release/node node
   - tar czvf android.gz node
 deploy:
