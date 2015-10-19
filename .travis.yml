@@ -16,3 +16,6 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+cache:
+  directories:
+  - android-ndk-r10e
