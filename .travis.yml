@@ -2,17 +2,18 @@ sudo: true
 language: c
 compiler: gcc
 before_install:
+  - if [ -d ./android-ndk-r10e ];then
   - wget http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin
   - sudo chmod a+x android-ndk-r10e-linux-x86_64.bin
   - ./android-ndk-r10e-linux-x86_64.bin > /dev/null
+  - fi
   - ./android-configure ./android-ndk-r10e
 script:
   - make
-  - ls -l
 deploy:
   provider: releases
   api_key: $CI_USER_TOKEN
-  file: calendar
+  file: out/Release/node
   skip_cleanup: true
   on:
     tags: true
