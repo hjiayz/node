@@ -1,0 +1,20 @@
+sudo: true
+language: c
+compiler: clang
+before_install:
+  - mkdir ndk
+  - cd ndk
+  - wget http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin
+  - sudo chmod a+x android-ndk-r10e-linux-x86_64.bin
+  - ./android-ndk-r10e-linux-x86_64.bin
+  - cd ..
+  - ./android-configure ./ndk/
+script:
+  - make
+deploy:
+  provider: releases
+  api_key: $CI_USER_TOKEN
+  file: calendar
+  skip_cleanup: true
+  on:
+    tags: true
